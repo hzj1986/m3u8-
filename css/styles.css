@@ -1,0 +1,9 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+ 
+#myVideo {
+    margin: 0 auto;
+    display: block;
+}
