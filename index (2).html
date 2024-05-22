@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = “en”   >
+<头>
+    <元字符集=“UTF-8”>
+    <元名称= “视口” 内容= “宽度=设备宽度，初始比例=1.0” >
+    <标题>播放器</标题>
+    < s脚本rc =“https://cdn.jsdelivr.net/npm/hls.js@latest”> </脚本>
+    <风格>
+        /* 为视频播放器添加样式 */
+        ＃视频播放器{
+            宽度：100 %；
+            高度：100 %；
+        }
+    </风格>
+</头>
+<正文>
+    <视频id =“videoPlayer”宽度=“640”高度=“360”> </视频>
+    <脚本>
+        // 获取视频数据和URL参数
+        var 视频= 文档。getElementById ( '视频播放器' ) ;
+        var urlParam = getParameterByName('url');
+ 
+        // 如果没有提供URL参数，则不进行任何操作
+        如果 ( !urlParam ) 返回;
+ 
+        // 创建HLS实例并加载URL
+        var hls =新的Hls ( ) ;
+        hls。加载源（ urlParam ）；
+        hls。附加媒体（视频）；
+        hls。on ( Hls.Events .MANIFEST_PARSED , function ( ) {​​  
+            视频。玩（） ；
+        });
+ 
+        // 获取URL参数函数
+        函数 getParameterByName (名称) {
+            名称 = 名称.替换( /[\[]/ , ' \\ [' ) .替换( /[\]]/ , ' \\ ]' ) ;
+            var regex = new RegExp ('[ \\ ?&]' + name + '=([^&#]*)' ) ;
+            var 结果=正确表达式。exec (位置.搜索) ;
+            返回结果 === null ? '' :decodeURIComponent(结果[1].replace(/\+/g,''));
+        }
+    </脚本>
+</正文>
+</html>​​
